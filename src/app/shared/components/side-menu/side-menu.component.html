@@ -1,31 +1,42 @@
-<h2>Páginas</h2>
-<hr />
+<h2 class="mt-3 text-2xl text-center">Páginas</h2>
 
-<h3 class="mt-3">Reactive</h3>
+<div class="divider"></div>
 
-<ul class="list-group">
-  @for (item of reactiveMenu; track item.title) {
-    <li [routerLink]="item.route" routerLinkActive="active" class="list-group-item">
-      {{ item.title }}
-    </li>
-  }
-</ul>
+<h3 class="mt-3 text-xl text-center">Reactive</h3>
+<section class="flex justify-center items-center">
+  <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">
+    @for (item of reactiveMenu; track item.title) {
+      <li>
+        <a [routerLink]="item.route" routerLinkActive="bg-orange-600">
+          {{ item.title }}
+        </a>
+      </li>
+    }
+  </ul>
+</section>
 
-<h3 class="mt-3">Auth</h3>
+<h3 class="mt-3 text-xl text-center">Auth</h3>
+<section class="flex justify-center items-center">
+  <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box m-2">
+    @for (item of authMenu; track item.title) {
+      <li>
+        <a [routerLink]="item.route" routerLinkActive="bg-orange-600">
+          {{ item.title }}
+        </a>
+      </li>
+    }
+  </ul>
+</section>
 
-<ul class="list-group">
-  @for (item of authMenu; track item.title) {
-    <li [routerLink]="item.route" routerLinkActive="active" class="list-group-item">
-      {{ item.title }}
-    </li>
-  }
-</ul>
-<h3 class="mt-3">Países</h3>
-
-<ul class="list-group">
-  @for (item of countryMenu; track item.title) {
-    <li [routerLink]="item.route" routerLinkActive="active" class="list-group-item">
-      {{ item.title }}
-    </li>
-  }
-</ul>
+<h3 class="mt-3 text-xl text-center">Países</h3>
+<section class="flex justify-center items-center">
+  <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box m-2">
+    @for (item of countryMenu; track item.title) {
+      <li>
+        <a [routerLink]="item.route" routerLinkActive="bg-orange-600">
+          {{ item.title }}
+        </a>
+      </li>
+    }
+  </ul>
+</section>
