@@ -1,85 +1,85 @@
-<h2>Validaciones Reactivas</h2>
-<hr />
+<h2 class="text-2xl text-center mt-2">Validaciones Reactivas</h2>
+<div class="divider"></div>
 
-<div class="row">
-  <div class="col">
-    <form autocomplete="off">
-      <!-- Nombre -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nombre y apellido</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="Nombre del usuario" />
+<form autocomplete="off">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
+    <!-- Nombre -->
+    <div>
+      <label class="input">
+        <span class="label">Nombre y apellido</span>
+        <input type="text" placeholder="Nombre del usuario" />
+      </label>
+      <span class="text-sm text-error"> Debe de ser en formato de nombre y apellido </span>
+    </div>
 
-          <span class="form-text text-danger"> Debe de ser en formato de nombre y apellido </span>
-        </div>
-      </div>
+    <!-- Email -->
+    <div>
+      <label class="input">
+        <span class="label">Email</span>
+        <input type="email" placeholder="Email del usuario" />
+      </label>
 
-      <!-- Email -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-9">
-          <input type="email" class="form-control" placeholder="Email del usuario" />
-          <span class="form-text text-danger"> mensaje de error del email </span>
-        </div>
-      </div>
+      <span class="text-sm text-error"> mensaje de error del email </span>
+    </div>
 
-      <!-- Username -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Username</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" placeholder="Nombre código del usuario" />
-          <span class="form-text text-danger"> El username no puede ser Strider </span>
-        </div>
-      </div>
+    <!-- Username -->
+    <div>
+      <label class="input">
+        <span class="label">Username</span>
+        <input type="text" placeholder="Nombre código del usuario" />
+      </label>
 
-      <!-- Password -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Password</label>
-        <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Password de su cuenta" />
+      <span class="text-sm text-error"> El username no puede ser Strider </span>
+    </div>
 
-          <span class="form-text text-danger">
-            La contraseña debe de ser mayor de 6 caracteres.
-          </span>
-        </div>
-      </div>
+    <!-- Password -->
+    <div>
+      <label class="input">
+        <span class="label"> Password</span>
+        <input type="password" placeholder="Password de su cuenta" />
+      </label>
+      <span class="text-sm text-error"> La contraseña debe de ser mayor de 6 caracteres. </span>
+    </div>
 
-      <!-- Password2 -->
-      <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Confirmar</label>
-        <div class="col-sm-9">
-          <input type="password" class="form-control" placeholder="Confirmar la contraseña" />
+    <!-- Password2 -->
+    <div>
+      <label class="input">
+        <span class="label">Confirmar</span>
+        <input type="password" placeholder="Confirmar la contraseña" />
+      </label>
+      <span class="text-sm text-error"> Las contraseñas deben de ser iguales </span>
+    </div>
+  </div>
+  <div class="flex justify-center items-center">
+    <button class="btn btn-primary" type="submit">Crear</button>
+  </div>
+</form>
 
-          <span class="form-text text-danger"> Las contraseñas deben de ser iguales </span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <button class="btn btn-primary float-end" type="submit">Crear</button>
-        </div>
-      </div>
-    </form>
+<div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 m-5">
+  <div>
+    <span class="text-lg"><strong> Form Valid: </strong></span>
+    <span class="text-lg"><strong> Form Pending: </strong></span>
+    <span class="text-lg"><strong> Form Errors: </strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Nombre </strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Email </strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Username </strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Password </strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Confirmar </strong></span>
+    <pre>{{ '' | json }}</pre>
   </div>
 </div>
-
-<h2>Form Valid:</h2>
-<h2>Form Status:</h2>
-<h2>Form Pending:</h2>
-<h2>Form errors</h2>
-<pre>{{ 'formulario' | json }}</pre>
-
-<h5>Nombre</h5>
-<pre>{{ 'formulario' | json }}</pre>
-
-<h5>Email</h5>
-<pre>{{ 'formulario' | json }}</pre>
-
-<h5>Username</h5>
-<pre>{{ 'formulario' | json }}</pre>
-
-<h5>Password</h5>
-<pre>{{ 'formulario' | json }}</pre>
-
-<h5>Confirmar</h5>
-<pre>{{ 'formulario' | json }}</pre>

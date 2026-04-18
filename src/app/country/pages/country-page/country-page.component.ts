@@ -1,8 +1,9 @@
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'country-page',
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './country-page.component.html',
 })
 export class CountryPageComponent { }
