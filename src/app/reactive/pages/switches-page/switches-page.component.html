@@ -1,71 +1,76 @@
-<h2>Reactivos: Switches</h2>
-<hr />
+<h2 class="text-2xl text-center mt-2">Reactivos: <small class="text-xl">Switches</small></h2>
+<div class="divider"></div>
 
 <form autocomplete="off">
-  <!-- Radio -->
-  <div class="row mb-3">
-    <label class="col-sm-3 col-form-label">Género</label>
-    <div class="col-sm-9">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" value="M" id="radioMasculino" />
-        <label class="form-check-label" for="radioMasculino"> Masculino </label>
-      </div>
-
-      <div class="form-check">
-        <input class="form-check-input" type="radio" value="F" id="radioFemenino" />
-        <label class="form-check-label" for="radioFemenino"> Femenino </label>
-      </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- Radio -->
+    <div>
+      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+        <legend class="fieldset-legend">Género</legend>
+        <div class="join gap-4">
+          <label class="label">
+            <input type="radio" name="radio-1" value="M" id="radioMasculino" class="radio" />
+            Masculino
+          </label>
+          <label class="label">
+            <input type="radio" name="radio-1" value="F" id="radioFemenino" class="radio" />
+            Femenino
+          </label>
+        </div>
+      </fieldset>
     </div>
-  </div>
 
-  <!-- Switches -->
-  <div class="row mb-3">
-    <label class="col-sm-3 col-form-label">Notificaciones</label>
-    <div class="col-sm-9">
-      <div class="form-check form-switch mt-2">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" />
-        <label class="form-check-label" for="flexSwitchCheckChecked"
-          >Quiero recibir notificaciones</label
-        >
-      </div>
+    <!-- Switches -->
+    <div>
+      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+        <legend class="fieldset-legend">Notificaciones</legend>
+        <label class="label">
+          <input type="checkbox" id="flexSwitchCheckChecked" class="checkbox" />
+          Quiero recibir notificaciones
+        </label>
+      </fieldset>
     </div>
-  </div>
 
-  <!-- Switches -->
-  <div class="row mb-3">
-    <label class="col-sm-3 col-form-label"></label>
-    <div class="col-sm-9">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
+    <!-- Switches -->
+    <div>
+      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+        <legend class="fieldset-legend"></legend>
+        <label class="label">
+          <input type="checkbox" id="flexCheckDefault" class="checkbox" />
           Términos y condiciones de uso
         </label>
-      </div>
-      <span class="form-text text-danger"> Debe de aceptar las condiciones de uso </span>
+        <span class="text-error text-sm"> Debe de aceptar las condiciones de uso </span>
+      </fieldset>
     </div>
   </div>
 
   <!-- Boton submit -->
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-primary float-end" type="submit">Guardar</button>
-    </div>
+  <div class="flex justify-center items-center">
+    <button class="btn btn-primary float-end" type="submit">Guardar</button>
   </div>
 </form>
 
-<h5>Valor del formulario</h5>
-<pre>{{ 'object' | json }}</pre>
-<br />
+<div class="divider"></div>
 
-<h5>Persona</h5>
-<pre>{{ 'object' | json }}</pre>
-<br />
-
-<h5>Valid</h5>
-<pre>{{ 'object' | json }}</pre>
-
-<!-- <h5>Términos</h5> -->
-<!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
-
-<!-- <br>
-<pre>Condiciones: </pre> -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
+  <div>
+    <span class="text-xl"><strong>Valor del formulario</strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Persona</strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Valid</strong></span>
+    <pre>{{ '' | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Términos</strong></span>
+    <!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
+  </div>
+  <div>
+    <span class="text-xl"><strong>Condiciones</strong></span>
+    <pre>Condiciones: </pre>
+  </div>
+</div>

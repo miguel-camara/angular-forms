@@ -1,102 +1,105 @@
-<h2>Reactivos: <small> Dinámicos </small></h2>
-<hr />
+<h2 class="text-2xl text-center mt-2">Reactivos: <small class="text-xl"> Dinámicos </small></h2>
+<div class="divider"></div>
 
-<!-- <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()"> -->
-<!-- Nombre -->
-<div class="mb-3 row">
-  <label class="col-sm-3 col-form-label">Nombre</label>
-  <div class="col-sm-9">
-    <input class="form-control" placeholder="Nombre de la persona" formControlName="name" />
-    <!-- @if ( formUtils.isValidField(myForm, 'name')) {
-      <span class="form-text text-danger">
-        {{ formUtils.getFieldError(myForm, "name") }}
-      </span>
-      } -->
-  </div>
-</div>
-
-<!-- Agregar Favorito -->
-<div class="mb-3 row">
-  <label class="col-sm-3 col-form-label">Agregar</label>
-  <div class="col-sm-9">
-    <div class="input-group">
-      <!-- <input
-          class="form-control"
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
+    <!-- Nombre -->
+    <div>
+      <label class="input">
+        <span>Nombre</span>
+        <input placeholder="Nombre de la persona" formControlName="name" />
+      </label>
+      @if (formUtils.isValidField(myForm, 'name')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'name') }}
+        </span>
+      }
+    </div>
+    <!-- Agregar Favorito -->
+    <div class="col-span-2">
+      <div
+        class="flex items-center rounded-md pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 mb-2"
+      >
+        <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">
+          <span class="label">Agregar</span>
+        </div>
+        <input
+          class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base focus:outline-none sm:text-sm/6"
           placeholder="Agregar favorito"
           [formControl]="newFavorite"
           (keydown.enter)="onAddToFavorites()"
           (keydown.enter)="$event.preventDefault()"
-        /> -->
-
-      <!-- <button
-          class="btn btn-outline-primary"
-          type="button"
-          (click)="onAddToFavorites()"
-        > -->
-      Agregar favorito
-      <!-- </button> -->
-    </div>
-  </div>
-</div>
-
-<!-- Lista de Juegos Favoritos -->
-<div class="mb-3 row">
-  <label class="col-sm-3 col-form-label">Favoritos</label>
-
-  <div class="col-sm-9" formArrayName="favoriteGames">
-    <!-- @for (favoriteGame of favoriteGames.controls; track $index; let i =
-      $index) {
-      <div class="mb-1">
-        <div class="input-group">
-          <input class="form-control" [formControlName]="i" />
-
-          <button
-            class="btn btn-outline-danger"
-            type="button"
-            (click)="onDeleteFavorite(i)"
-          >
-            Eliminar
+        />
+        <div class="grid shrink-0 grid-cols-1 focus-within:relative">
+          <button class="btn btn-outline btn-primary" type="button" (click)="onAddToFavorites()">
+            Agregar favorito
           </button>
         </div>
+      </div>
+    </div>
 
-        @if ( formUtils.isValidFieldInArray(favoriteGames, i)) {
-        <span class="form-text text-danger">
-          {{ formUtils.getFieldErrorInArray(favoriteGames, i) }}
-        </span>
--->
-    <!-- <span class="form-text text-danger"> -->
-    <!-- {{ formUtils.getFieldError(myForm, "name") }}
-          </span>  -->
+    <!-- Lista de Juegos Favoritos -->
+    <div class="col-span-2">
+      <label class="text-2xl mb-5">
+        <span><strong>Favoritos</strong></span>
+      </label>
+      <div formArrayName="favoriteGames">
+        @for (favoriteGame of favoriteGames.controls; track $index; let i = $index) {
+          <div class="flex flex-col">
+            <div
+              class="flex items-center rounded-md pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 mb-2"
+            >
+              <input
+                class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base focus:outline-none sm:text-sm/6"
+                placeholder="Juegos Favoritos"
+                [formControlName]="i"
+              />
+              <div class="grid shrink-0 grid-cols-1 focus-within:relative">
+                <button
+                  class="btn btn-outline btn-primary"
+                  type="button"
+                  (click)="onDeleteFavorite(i)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+            @if (formUtils.isValidFieldInArray(favoriteGames, i)) {
+              <span class="form-text text-danger">
+                {{ formUtils.getFieldErrorInArray(favoriteGames, i) }}
+              </span>
+            }
+          </div>
+        }
+      </div>
 
-    <!--  }
-       </div>
+      @if (formUtils.isValidField(myForm, 'favoriteGames')) {
+        <span class="form-text text-danger"> Debe de tener al menos 2 juegos. </span>
+      }
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Guardar</button>
+  </div>
+</form>
 
-      } @if ( formUtils.isValidField(myForm, 'favoriteGames')) {
-      <span class="form-text text-danger">
-        Debe de tener al menos 2 juegos.
-      </span>
-      }-->
+<div class="divider"></div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
+  <div>
+    <span class="text-xl"><strong>Valid</strong></span>
+    <pre>{{ myForm.valid | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Value</strong></span>
+    <pre>{{ myForm.value | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Agregar Juego Error</strong></span>
+    <pre>{{ myForm.controls['favoriteGames'].errors | json }}</pre>
+  </div>
+  <div>
+    <span class="text-xl"><strong>Agregar Juego Value</strong></span>
+    <pre>{{ myForm.controls['favoriteGames'].value | json }}</pre>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-sm-12">
-    <button type="submit" class="btn btn-primary float-end">
-      <!-- [disabled]="myForm.invalid" -->
-      Guardar
-    </button>
-  </div>
-</div>
-<!-- </form> -->
-
-<span>Valid</span>
-<!-- <pre>{{ myForm.valid | json }}</pre> -->
-<br />
-
-<span>Value</span>
-<!-- <pre>{{ myForm.value | json }}</pre> -->
-<br />
-
-<span>Agregar Juego</span>
-<!-- <pre>{{ myForm.controls["favoriteGames"].errors | json }}</pre>
-<pre>{{ myForm.controls["favoriteGames"].value | json }}</pre> -->

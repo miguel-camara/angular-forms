@@ -1,54 +1,52 @@
-<h1 class="mt-3">Selectores anidados</h1>
-<hr />
+<h2 class="text-2xl text-center mt-2">Selectores anidados</h2>
+<div class="divider"></div>
 
-<form>
-  <!-- Region -->
-  <div class="row mb-3">
-    <div class="col">
-      <label class="form-label">Continente:</label>
-      <select title="continente" formControlName="region" class="form-control">
-        <option value="">-- Seleccione Continente --</option>
-
+<form autocomplete="off">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
+    <!-- Region -->
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Continente:</legend>
+      <select title="region" class="select select-ghost">
+        <option disabled selected>-- Seleccione Continente --</option>
         <!-- <option [value]="region">
           {{ region }}
         </option> -->
       </select>
-    </div>
-  </div>
-
-  <!-- Countries -->
-
-  <div class="row mb-3">
-    <div class="col">
-      <label class="form-label">País:</label>
-      <select title="pais" formControlName="country" class="form-control">
-        <option value="">-- Seleccione País --</option>
-
+      <!-- <span class="label">Optional</span> -->
+    </fieldset>
+    <!-- Countries -->
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">País:</legend>
+      <select title="pais" class="select select-ghost">
+        <option disabled selected>-- Seleccione Pais --</option>
         <!-- <option [value]="country.cca3">
           {{ country.name }}
         </option> -->
       </select>
-    </div>
-  </div>
-
-  <!-- Countries -->
-
-  <div class="row mb-3">
-    <div class="col">
-      <label class="form-label">Fronteras:</label>
-      <select title="fronteras" formControlName="border" class="form-control">
-        <option value="">-- Seleccione la frontera --</option>
-
+      <!-- <span class="label">Optional</span> -->
+    </fieldset>
+    <!-- Countries -->
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Fronteras:</legend>
+      <select title="pais" class="select select-ghost">
+        <option disabled selected>-- Seleccione la frontera --</option>
         <!-- <option [value]="country.cca3">
           {{ country.name }}
         </option> -->
       </select>
-    </div>
+      <!-- <span class="label">Optional</span> -->
+    </fieldset>
   </div>
 </form>
 
-<h3>Formulario</h3>
-<code>
-  <!-- {{ 'myForm.value' | json }} -->
-</code>
-<p>is form valid: {{ 'myForm.valid' }}</p>
+<div class="divider"></div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 m-5 gap-4">
+  <div>
+    <h3 class="text-xl">Formulario</h3>
+    <code>
+      {{ 'myForm.value' | json }}
+    </code>
+    <p>is form valid: {{ 'myForm.valid' }}</p>
+  </div>
+</div>

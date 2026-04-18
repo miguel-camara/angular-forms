@@ -1,98 +1,100 @@
-<h2>Reactivos: Básicos</h2>
-<hr />
+<h2 class="text-2xl text-center mt-2">Reactivos: <small class="text-xl">Básicos</small> </h2>
+<div class="divider"></div>
 
-<div class="row">
-  <div class="col">
-    <!-- <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()"> -->
-
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
     <!-- Campo de producto -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Producto</label>
-      <div class="col-sm-9">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Nombre del producto"
-          formControlName="name"
-        />
+    <div>
+      <label class="input">
+        <span class="label">Producto</span>
+        <input type="text" placeholder="Nombre del producto" formControlName="name" />
+      </label>
 
-        <!-- @if ( formUtils.isValidField( myForm, 'name') ) {
-          <span class="form-text text-danger">
-            {{ formUtils.getFieldError(myForm, "name") }}
-          </span>
-          } -->
-      </div>
+      @if (formUtils.isValidField(myForm, 'name')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'name') }}
+        </span>
+      }
     </div>
 
-    <!-- Campo de producto -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Precio</label>
-      <div class="col-sm-9">
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Precio del producto"
-          formControlName="price"
-        />
-        <!-- @if ( formUtils.isValidField( myForm, 'price') ) {
-          <span class="form-text text-danger">
-            {{ formUtils.getFieldError(myForm, "price") }}
-          </span>
-          } -->
-      </div>
+    <!-- Campo de precios -->
+    <div>
+      <label class="input">
+        <span class="label">Precio</span>
+        <input type="number" placeholder="Precio del producto" formControlName="price" />
+      </label>
+      @if (formUtils.isValidField(myForm, 'price')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'price') }}
+        </span>
+      }
     </div>
 
     <!-- Campo de existencias -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Existencias</label>
-      <div class="col-sm-9">
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Existencias del producto"
-          formControlName="inStorage"
-        />
+    <div>
+      <label class="input">
+        <span>Existencias</span>
+        <input type="number" placeholder="Existencias del producto" formControlName="inStorage" />
+      </label>
 
-        <!-- @if ( formUtils.isValidField( myForm, 'inStorage') ) {
-          <span class="form-text text-danger">
-            {{ formUtils.getFieldError(myForm, "inStorage") }}
-          </span>
-          } -->
-      </div>
+      @if (formUtils.isValidField(myForm, 'inStorage')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'inStorage') }}
+        </span>
+      }
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col">
-        <button type="submit" class="btn btn-primary float-end">Guardar</button>
-      </div>
-    </div>
-    <!-- </form> -->
+  <div class="flex justify-center items-center">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </div>
+</form>
+
+<div class="divider"></div>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 m-5">
+  <div>
+    <span class="text-lg"><strong> Valid </strong></span>
+    <pre>{{ myForm.valid | json }}</pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Pristine </strong> </span>
+
+    <pre>{{ myForm.pristine | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong>Touched</strong></span>
+    <pre>{{ myForm.touched | json }}</pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Value </strong> </span>
+    <pre>  {{ myForm.value | json }} </pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Errores en name </strong> </span>
+    <pre>  {{ myForm.controls['name'].errors | json }} </pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Errores en price </strong> </span>
+    <pre>  {{ myForm.controls['price'].errors | json }} </pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Errores en inStorage </strong> </span>
+    <pre>  {{ myForm.controls['inStorage'].errors | json }} </pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Precio </strong> </span>
+    <pre>  {{ myForm.controls['price'].value | json }} </pre>
+  </div>
+
+  <div>
+    <span class="text-lg"> <strong> Producto </strong> </span>
+    <pre>  {{ myForm.controls['name'].value | json }} </pre>
   </div>
 </div>
-
-<!-- <div class="row">
-  <div class="col">
-    <span>Valid</span>
-    <pre>{{ myForm.valid | json }}</pre>
-
-    <span>Pristine</span>
-    <pre>{{ myForm.pristine | json }}</pre>
-
-    <span>Touched</span>
-    <pre>{{ myForm.touched | json }}</pre>
-
-    <span>Value</span>
-    <pre>{{ myForm.value | json }}</pre>
-
-    <span>Errores en name</span>
-    <pre>{{ myForm.controls["name"].errors | json }}</pre>
-    <pre>{{ myForm.controls["price"].errors | json }}</pre>
-    <pre>{{ myForm.controls["inStorage"].errors | json }}</pre>
-
-    <span>Precio</span>
-    <pre>{{ myForm.controls["price"].value | json }}</pre>
-
-    <span>Producto</span>
-    <pre>{{ myForm.controls["name"].value | json }}</pre>
-  </div>
-</div> -->
