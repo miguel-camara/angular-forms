@@ -1,38 +1,44 @@
 <h2 class="text-2xl text-center mt-2">Selectores anidados</h2>
 <div class="divider"></div>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="myForm">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
     <!-- Region -->
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Continente:</legend>
-      <select title="region" class="select select-ghost">
+      <select formControlName="region" title="region" class="select select-ghost">
         <option disabled selected>-- Seleccione Continente --</option>
-        <!-- <option [value]="region">
-          {{ region }}
-        </option> -->
+        @for (region of regions(); track region) {
+          <option [value]="region">
+            {{ region }}
+          </option>
+        }
       </select>
       <!-- <span class="label">Optional</span> -->
     </fieldset>
     <!-- Countries -->
     <fieldset class="fieldset">
       <legend class="fieldset-legend">País:</legend>
-      <select title="pais" class="select select-ghost">
+      <select formControlName="country" title="pais" class="select select-ghost">
         <option disabled selected>-- Seleccione Pais --</option>
-        <!-- <option [value]="country.cca3">
-          {{ country.name }}
-        </option> -->
+        @for (country of countriesByRegion(); track country.cca3) {
+          <option [value]="country.cca3">
+            {{ country.name.common }}
+          </option>
+        }
       </select>
       <!-- <span class="label">Optional</span> -->
     </fieldset>
     <!-- Countries -->
     <fieldset class="fieldset">
       <legend class="fieldset-legend">Fronteras:</legend>
-      <select title="pais" class="select select-ghost">
+      <select formControlName="border" title="pais" class="select select-ghost">
         <option disabled selected>-- Seleccione la frontera --</option>
-        <!-- <option [value]="country.cca3">
-          {{ country.name }}
-        </option> -->
+        @for (country of borders(); track country.cca3) {
+          <option [value]="country.cca3">
+            {{ country.name.common }}
+          </option>
+        }
       </select>
       <!-- <span class="label">Optional</span> -->
     </fieldset>
@@ -45,8 +51,8 @@
   <div>
     <h3 class="text-xl">Formulario</h3>
     <code>
-      {{ 'myForm.value' | json }}
+      {{ myForm.value | json }}
     </code>
-    <p>is form valid: {{ 'myForm.valid' }}</p>
+    <p>is form valid: {{ myForm.valid }}</p>
   </div>
 </div>

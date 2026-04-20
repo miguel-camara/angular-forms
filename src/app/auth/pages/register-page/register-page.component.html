@@ -1,54 +1,82 @@
 <h2 class="text-2xl text-center mt-2">Validaciones Reactivas</h2>
 <div class="divider"></div>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
     <!-- Nombre -->
     <div>
       <label class="input">
         <span class="label">Nombre y apellido</span>
-        <input type="text" placeholder="Nombre del usuario" />
+        <input type="text" placeholder="Nombre del usuario" formControlName="name" />
       </label>
-      <span class="text-sm text-error"> Debe de ser en formato de nombre y apellido </span>
+      @if (formUtils.isValidField(myForm, 'name')) {
+        <span class="text-sm text-error">
+          El campo debe de tener nombre y apellido
+          <!-- {{ formUtils.getFieldError(myForm, "name") }} -->
+        </span>
+      }
     </div>
 
     <!-- Email -->
     <div>
       <label class="input">
         <span class="label">Email</span>
-        <input type="email" placeholder="Email del usuario" />
+        <input formControlName="email" type="email" placeholder="Email del usuario" />
       </label>
 
-      <span class="text-sm text-error"> mensaje de error del email </span>
+      @if (formUtils.isValidField(myForm, 'email')) {
+        <span class="text-sm text-error">
+          <!-- El valor ingresado no parece un correo electrónico -->
+          {{ formUtils.getFieldError(myForm, 'email') }}
+        </span>
+      }
     </div>
 
     <!-- Username -->
     <div>
       <label class="input">
         <span class="label">Username</span>
-        <input type="text" placeholder="Nombre código del usuario" />
+        <input formControlName="username" type="text" placeholder="Nombre código del usuario" />
       </label>
 
-      <span class="text-sm text-error"> El username no puede ser Strider </span>
+      @if (formUtils.isValidField(myForm, 'username')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'username') }}
+        </span>
+      }
     </div>
 
     <!-- Password -->
     <div>
       <label class="input">
         <span class="label"> Password</span>
-        <input type="password" placeholder="Password de su cuenta" />
+        <input formControlName="password" type="password" placeholder="Password de su cuenta" />
       </label>
-      <span class="text-sm text-error"> La contraseña debe de ser mayor de 6 caracteres. </span>
+
+      @if (formUtils.isValidField(myForm, 'password')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'password') }}
+        </span>
+      }
     </div>
 
     <!-- Password2 -->
     <div>
       <label class="input">
         <span class="label">Confirmar</span>
-        <input type="password" placeholder="Confirmar la contraseña" />
+        <input formControlName="password2" type="password" placeholder="Confirmar la contraseña" />
       </label>
-      <span class="text-sm text-error"> Las contraseñas deben de ser iguales </span>
+      @if (formUtils.isValidField(myForm, 'password2')) {
+        <span class="text-sm text-error">
+          {{ formUtils.getFieldError(myForm, 'password2') }}
+        </span>
+      }
     </div>
+  </div>
+  <div class="flex justify-center items-center mb-4">
+    @if (myForm.errors && myForm.touched) {
+      <span class="text-error text-sm"> Las contraseñas no son iguales </span>
+    }
   </div>
   <div class="flex justify-center items-center">
     <button class="btn btn-primary" type="submit">Crear</button>
@@ -58,28 +86,36 @@
 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 m-5">
   <div>
     <span class="text-lg"><strong> Form Valid: </strong></span>
+    <pre>{{ myForm.valid | json }}</pre>
     <span class="text-lg"><strong> Form Pending: </strong></span>
+    <pre>{{ myForm.pending | json }}</pre>
     <span class="text-lg"><strong> Form Errors: </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.errors | json }}</pre>
+    <span class="text-lg"><strong> Form Status: </strong></span>
+    <pre>{{ myForm.status | json }}</pre>
+  </div>
+  <div>
+    <span class="text-lg"><strong> Value </strong></span>
+    <pre>{{ myForm.value | json }}</pre>
   </div>
   <div>
     <span class="text-lg"><strong> Nombre </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['name'].errors | json }}</pre>
   </div>
   <div>
     <span class="text-lg"><strong> Email </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['email'].errors | json }}</pre>
   </div>
   <div>
     <span class="text-lg"><strong> Username </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['username'].errors | json }}</pre>
   </div>
   <div>
     <span class="text-lg"><strong> Password </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['password'].errors | json }}</pre>
   </div>
   <div>
     <span class="text-lg"><strong> Confirmar </strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['password2'].errors | json }}</pre>
   </div>
 </div>

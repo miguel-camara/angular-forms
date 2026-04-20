@@ -1,7 +1,7 @@
 <h2 class="text-2xl text-center mt-2">Reactivos: <small class="text-xl">Switches</small></h2>
 <div class="divider"></div>
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     <!-- Radio -->
     <div>
@@ -9,11 +9,23 @@
         <legend class="fieldset-legend">Género</legend>
         <div class="join gap-4">
           <label class="label">
-            <input type="radio" name="radio-1" value="M" id="radioMasculino" class="radio" />
+            <input
+              type="radio"
+              value="M"
+              id="radioMasculino"
+              class="radio"
+              formControlName="gender"
+            />
             Masculino
           </label>
           <label class="label">
-            <input type="radio" name="radio-1" value="F" id="radioFemenino" class="radio" />
+            <input
+              type="radio"
+              value="F"
+              id="radioFemenino"
+              class="radio"
+              formControlName="gender"
+            />
             Femenino
           </label>
         </div>
@@ -25,7 +37,12 @@
       <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
         <legend class="fieldset-legend">Notificaciones</legend>
         <label class="label">
-          <input type="checkbox" id="flexSwitchCheckChecked" class="checkbox" />
+          <input
+            type="checkbox"
+            id="flexSwitchCheckChecked"
+            class="checkbox"
+            formControlName="wantNotifications"
+          />
           Quiero recibir notificaciones
         </label>
       </fieldset>
@@ -33,13 +50,24 @@
 
     <!-- Switches -->
     <div>
-      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+      <fieldset
+        [class.text-error]="formUtils.isValidField(myForm, 'termAndConditions')"
+        class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4"
+      >
         <legend class="fieldset-legend"></legend>
         <label class="label">
-          <input type="checkbox" id="flexCheckDefault" class="checkbox" />
+          <input
+            type="checkbox"
+            id="flexCheckDefault"
+            class="checkbox"
+            formControlName="termAndConditions"
+          />
           Términos y condiciones de uso
         </label>
-        <span class="text-error text-sm"> Debe de aceptar las condiciones de uso </span>
+
+        @if (formUtils.isValidField(myForm, 'termAndConditions')) {
+          <span class="text-sm text-error"> Debe de aceptar las condiciones de uso </span>
+        }
       </fieldset>
     </div>
   </div>
@@ -55,15 +83,15 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
   <div>
     <span class="text-xl"><strong>Valor del formulario</strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.value | json }}</pre>
   </div>
   <div>
     <span class="text-xl"><strong>Persona</strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.controls['gender'].value | json }}</pre>
   </div>
   <div>
     <span class="text-xl"><strong>Valid</strong></span>
-    <pre>{{ '' | json }}</pre>
+    <pre>{{ myForm.valid | json }}</pre>
   </div>
   <div>
     <span class="text-xl"><strong>Términos</strong></span>
