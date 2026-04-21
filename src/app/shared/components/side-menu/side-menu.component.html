@@ -2,7 +2,11 @@
   <h2 class="text-2xl">Páginas</h2>
   <div>
     <label class="toggle toggle-xl text-base-content">
-      <input type="checkbox" (change)="themeService.toggleTheme()" />
+      <input
+        type="checkbox"
+        [checked]="!themeService.isDark()"
+        (change)="themeService.toggleTheme()"
+      />
       <svg xmlns="http://www.w3.org/2000/svg" aria-label="enabled" viewBox="0 0 24 24">
         <path
           fill="none"

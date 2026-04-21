@@ -28,6 +28,7 @@ export class DynamicPageComponent {
         ['Death Stranding', Validators.required],
       ],
       Validators.minLength(2)
+
     ),
   });
 
@@ -39,6 +40,7 @@ export class DynamicPageComponent {
   }
 
   onAddToFavorites() {
+
     if (this.newFavorite.invalid) return;
     const newGame = this.newFavorite.value;
 
