@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { reactiveRoutes } from '../../../reactive/reactive.routes';
-import { ThemeService } from '../../../services/theme.service';
+import { reactiveRoutes } from '@reactive/reactive.routes';
+import { ThemeService } from '@services/theme.service';
 
 interface MenuItem {
   title: string;

@@ -1,12 +1,11 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { FormUtils } from '../../../utils/form-utils';
+import { FormUtils } from '@utils/form-utils';
 
 @Component({
   selector: 'register-page',

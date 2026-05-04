@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { Country } from '../interfaces/country.interface';
+import { Country } from '@country/interfaces/country.interface';
+import { environment } from '@environments/environment';
+import { combineLatest, Observable, of, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
-  private baseUrl = 'https://restcountries.com/v3.1';
+  private baseUrl = environment.restCountries;
   private http = inject(HttpClient);
+
+  private cacheRegion = new Map<string, Country[]>();
+  private cacheByAlphaCode = new Map<string, Country>();
 
   private _regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
@@ -17,15 +21,24 @@ export class CountryService {
   getCountriesByRegion(region: string): Observable<Country[]> {
     if (!region) return of([]);
 
-    console.log({ region });
+    if (this.cacheRegion.has(region)) return of(this.cacheRegion.get(region)!)
 
     const url = `${this.baseUrl}/region/${region}?fields=cca3,name,borders`;
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url)
+      .pipe(
+        tap(countries => this.cacheRegion.set(region, countries))
+      );
   }
 
   getCountryByAlphaCode(alphaCode: string): Observable<Country> {
+
+    if (this.cacheByAlphaCode.has(alphaCode)) return of(this.cacheByAlphaCode.get(alphaCode)!);
+
     const url = `${this.baseUrl}/alpha/${alphaCode}?fields=cca3,name,borders`;
-    return this.http.get<Country>(url);
+    return this.http.get<Country>(url)
+      .pipe(
+        tap(country => this.cacheByAlphaCode.set(alphaCode, country))
+      );
   }
 
   getCountryNamesByCodeArray(countryCodes: string[]): Observable<Country[]> {
