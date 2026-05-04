@@ -1,59 +1,75 @@
-# FormsAngular
+# AngularForms
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" height="50" alt="angular logo"/>&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" height="50" alt="tailwindcss logo" />
+</p>
 
-## Development server
+**AngularForms** aplicacion utilizando los formularios reactivos en angular y uso de la API **REST Countries**. Hecho con **Angular** y para los estilos **Tailwind CSS** y **daisyUI**.
 
-To start a local development server, run:
+## Run Locally
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Clone the project
 
 ```bash
-ng generate component component-name
+  git clone https://github.com/miguel-camara/angular-forms.git
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Go to the project directory
 
 ```bash
-ng generate --help
+  cd angular-forms
 ```
 
-## Building
-
-To build the project run:
+Install dependencies
 
 ```bash
-ng build
+  npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Generate the `.env` based on the `.env.template`
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Run the script
 
 ```bash
-ng test
+  npm run set-env
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start the server
 
 ```bash
-ng e2e
+  npm run start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Environment Variables
 
-## Additional Resources
+To run this project, you will need to add the following environment variables to your **environment.ts** files
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+`REST_COUNTRIES_API`
+
+## Demo
+
+[Demo](https://reactive-foms-miguel.netlify.app/#/reactive/basic)
+
+## Screenshots
+
+![App Screenshot](public/screens/screen-1.png)
+
+![App Screenshot](public/screens/screen-2.png)
+
+![App Screenshot](public/screens/screen-3.png)
+
+![App Screenshot](public/screens/screen-4.png)
+
+![App Screenshot](public/screens/screen-5.png)
+
+## Features
+
+- **Angular Forms:** Aplicación en donde se usan los formularios reactivos en Angular, en donde se prueban las validaciones de formularios y el uso de la API de RestCountries para validar campos.
+- **Reactive:** En esta sección se prueban los formularios reactivos con campos requeridos.
+- **Auth:** En esta sección es la simulación de un login en donde se valida correo y contraseña.
+- **Paises:** En esta sección se usa la API de RESTCountries en donde por medio de selectores obtenemos países dependiendo del selector anterior.
+
+## Tech Stack
+
+**Frontend:** Angular, Tailwind CSS y daisyUI
