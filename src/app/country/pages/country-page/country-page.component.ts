@@ -1,8 +1,8 @@
 import { JsonPipe } from '@angular/common';
 import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CountryService } from '../../services/country.service';
-import { Country } from '../../interfaces/country.interface';
+import { Country } from '@country/interfaces/country.interface';
+import { CountryService } from '@country/services/country.service';
 import { filter, switchMap, tap } from 'rxjs';
 
 @Component({
